@@ -15,4 +15,3 @@
     register: output
 
   - debug: msg="{{ output.stdout }}"
----
