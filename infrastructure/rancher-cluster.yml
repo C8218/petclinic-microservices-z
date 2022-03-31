@@ -1,0 +1,20 @@
+nodes:
+  - address: 44.200.246.91 # Creds for Rancher cluster is created for this IP address
+    internal_address: 172.31.12.40
+    user: ubuntu
+    role: [controlplane, worker, etcd]
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+ssh_key_path: ~/.ssh/zero-rancher.key
+
+# Required for external TLS termination with
+# ingress-nginx v0.22+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
